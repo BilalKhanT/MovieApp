@@ -1,5 +1,4 @@
 import 'package:movie_app/data/models/movie_local_model.dart';
-
 import 'movie_local/local_database.dart';
 
 abstract class MovieLocalDataSource {

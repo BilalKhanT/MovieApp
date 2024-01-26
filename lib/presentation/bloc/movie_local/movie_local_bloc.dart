@@ -17,7 +17,7 @@ class MovieLocalBloc extends Bloc<MovieLocalEvent, MovieLocalState> {
   }) : super(MovieLocalInitial());
 
   @override
-  Stream<MovieLocalState> mapEventToState (MovieLocalEvent event) async* {
+  Stream<MovieLocalState> mapEventToState(MovieLocalEvent event) async* {
     if (event is SaveMovieEvent) {
       await saveMovie(event.starredMovieEntity);
     }
@@ -31,6 +31,11 @@ class MovieLocalBloc extends Bloc<MovieLocalEvent, MovieLocalState> {
     }
     else if (event is DeleteSavedMovieEvent) {
       await removeMovie(event.starredMovieEntity);
+      final updatedMoviesResult = await getSavedMovie();
+      yield updatedMoviesResult.fold(
+            (error) => MovieLocalError(error.errorMsg),
+            (movies) => MovieLocalLoaded(movies),
+      );
     }
   }
 }

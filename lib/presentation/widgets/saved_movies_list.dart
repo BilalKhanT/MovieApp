@@ -21,10 +21,10 @@ Widget savedMovieList (BuildContext context, List<StarredMovieEntity> movies) {
           motion: StretchMotion(),
           children: [
             SlidableAction(
-              onPressed: (context) {BlocProvider.of<MovieLocalBloc>(context)
-              .add(DeleteSavedMovieEvent(movie));
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) => SavedMovieScreen()));},
+              onPressed: (context) {
+                BlocProvider.of<MovieLocalBloc>(context).add(
+                  DeleteSavedMovieEvent(movie),
+                );},
               icon: Icons.delete,
               backgroundColor: Color(0xffB81736),
             )
