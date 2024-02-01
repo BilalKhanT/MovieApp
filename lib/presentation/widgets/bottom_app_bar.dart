@@ -13,16 +13,16 @@ Widget bottomAppBar(BuildContext context, int index) {
         ),
       ),
       indicatorColor: Colors.grey.shade700,
-      backgroundColor: Color(0xff281537),
+      backgroundColor: const Color(0xff281537),
       elevation: 0,
     ),
     child: NavigationBar(
       onDestinationSelected: (index) {
         if (index == 1) {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomeScreen()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const HomeScreen()));
         }
         else if (index == 2) {
-          Navigator.of(context).push(MaterialPageRoute(builder: (context) => SavedMovieScreen()));
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SavedMovieScreen()));
         }
       },
       selectedIndex: index,

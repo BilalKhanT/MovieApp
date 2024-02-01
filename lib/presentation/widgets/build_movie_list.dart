@@ -10,7 +10,7 @@ Widget buildMovieList(List<MovieEntity> movies, BuildContext context) {
   var screenHeight = MediaQuery.of(context).size.height;
   return ListView.builder(
     itemCount: movies.length,
-    padding: EdgeInsets.only(bottom: kBottomNavigationBarHeight),
+    padding: const EdgeInsets.only(bottom: kBottomNavigationBarHeight),
     itemBuilder: (context, index) {
       final movie = movies[index];
       return Material(

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,7 +7,7 @@ import 'package:movie_app/presentation/ui/search_movie/custom_search_movie.dart'
 
 Widget appBar(BuildContext context) {
   return Padding(
-    padding: EdgeInsets.only(left: 15.0, right: 15.0),
+    padding: const EdgeInsets.only(left: 15.0, right: 15.0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -23,7 +22,7 @@ Widget appBar(BuildContext context) {
             showSearch(context: context, delegate: CustomSearchDelegate(BlocProvider.of<SearchMovieBloc>(context),
             BlocProvider.of<MovieGenreBloc>(context)));
           },
-          icon: Icon(Icons.search_outlined),
+          icon: const Icon(Icons.search_outlined),
           color: Colors.grey.shade800,)
       ],
     ),

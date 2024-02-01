@@ -11,8 +11,9 @@ import '../../domain/entities/movie_local_entity.dart';
 import '../bloc/movie_local/movie_local_bloc.dart';
 import '../bloc/movie_local/movie_local_event.dart';
 import '../bloc/movie_local/movie_local_state.dart';
+import '../ui/get_ticket_screen/select_date_screen.dart';
 
-Widget MovieCard (MovieDetailEntity movie, BuildContext context, MovieTrailerBloc trailerBloc, MovieLocalBloc movieLocalBloc) {
+Widget movieCard (MovieDetailEntity movie, BuildContext context, MovieTrailerBloc trailerBloc, MovieLocalBloc movieLocalBloc) {
   var screenHeight = MediaQuery.of(context).size.height;
   var screenWidth = MediaQuery.of(context).size.width;
   return Column(
@@ -33,7 +34,7 @@ Widget MovieCard (MovieDetailEntity movie, BuildContext context, MovieTrailerBlo
                 onPressed: (){
                   Navigator.of(context).pop();
                 },
-                icon: Icon(Icons.arrow_back_ios, color: Colors.white,),
+                icon: const Icon(Icons.arrow_back_ios, color: Colors.white,),
               ),
               title: Text('Watch',
                 style: GoogleFonts.poppins(
@@ -51,7 +52,7 @@ Widget MovieCard (MovieDetailEntity movie, BuildContext context, MovieTrailerBlo
                   );
                   return IconButton(
                     onPressed: () => BlocProvider.of<MovieLocalBloc>(context).add(SaveMovieEvent(movieEntity)),
-                    icon: Icon(Icons.favorite, color: Colors.white,),
+                    icon: const Icon(Icons.favorite, color: Colors.white,),
                   );
                 },
               ),
@@ -64,20 +65,25 @@ Widget MovieCard (MovieDetailEntity movie, BuildContext context, MovieTrailerBlo
               fontWeight: FontWeight.w500,
             ),),
             SizedBox(height: screenHeight * 0.02,),
-            Container(
-              width: screenWidth - 150,
-              height: screenHeight * 0.07,
-              decoration: BoxDecoration(
-                color: Colors.blue.shade300,
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Center(
-                child: Text('Get Tickets',
-                  style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),),
+            GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SelectDateScreen(movieTitle: movie.title, date: movie.releaseDate,)));
+              },
+              child: Container(
+                width: screenWidth - 150,
+                height: screenHeight * 0.07,
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade300,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Center(
+                  child: Text('Get Tickets',
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),),
+                ),
               ),
             ),
             SizedBox(height: screenHeight * 0.02,),
@@ -85,11 +91,11 @@ Widget MovieCard (MovieDetailEntity movie, BuildContext context, MovieTrailerBlo
           ],
         ),
       ),
-      Container(
+      SizedBox(
         width: screenWidth,
         height: screenHeight * 0.45,
         child: Center(
-          child: Container(
+          child: SizedBox(
             width: screenWidth - 60,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

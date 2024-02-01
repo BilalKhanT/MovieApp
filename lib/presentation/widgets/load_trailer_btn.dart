@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,6 +5,7 @@ import 'package:movie_app/presentation/bloc/movie_trailer/movie_trailer_bloc.dar
 import 'package:movie_app/presentation/bloc/movie_trailer/movie_trailer_state.dart';
 import 'package:movie_app/presentation/ui/trailer_video/trailer_vid_args.dart';
 import 'package:movie_app/presentation/ui/trailer_video/trailer_video_screen.dart';
+import 'package:movie_app/utils/colors_list.dart';
 
 Widget loadTrailerButton(
     MovieTrailerBloc movieTrailerBloc, BuildContext context) {
@@ -26,7 +26,7 @@ Widget loadTrailerButton(
             width: screenWidth - 150,
             height: screenHeight * 0.07,
             decoration: BoxDecoration(
-              color: Colors.blue.shade300,
+              color: fillColor,
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: Center(
@@ -42,7 +42,7 @@ Widget loadTrailerButton(
           ),
         );
       } else {
-        return SizedBox.shrink();
+        return const SizedBox.shrink();
       }
     },
   );

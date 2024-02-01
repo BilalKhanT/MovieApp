@@ -61,18 +61,18 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
             bloc: movieDetailBloc,
             builder: (context, state) {
               if (state is MovieDetailLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else if (state is MovieDetailLoaded) {
                 final movieDetail = state.movieDetailEntity;
-                return MovieCard(movieDetail, context, movieTrailerBloc, movieLocalBloc);
+                return movieCard(movieDetail, context, movieTrailerBloc, movieLocalBloc);
               } else if (state is MovieDetailError) {
                 return Center(
-                  child: Text('${state.message}'),
+                  child: Text(state.message),
                 );
               } else {
-                return Center(
+                return const Center(
                   child: Text('Something went wrong'),
                 );
               }

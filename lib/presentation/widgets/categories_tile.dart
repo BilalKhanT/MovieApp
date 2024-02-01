@@ -11,7 +11,7 @@ Widget categoriesTile (BuildContext context, List<GenreEntity> genres) {
   int column1Count = isEven ? totalGenres ~/ 2 : (totalGenres ~/ 2) + 1;
   int column2Count = totalGenres - column1Count;
   return Padding(
-    padding: EdgeInsets.all(10.0),
+    padding: const EdgeInsets.all(10.0),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
@@ -20,7 +20,7 @@ Widget categoriesTile (BuildContext context, List<GenreEntity> genres) {
             itemCount: column1Count,
             itemBuilder: (context, index) {
               return Padding(
-                padding: EdgeInsets.all(5.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Container(
                   height: screenHeight * 0.1,
                   width: screenWidth - 150,
@@ -29,7 +29,7 @@ Widget categoriesTile (BuildContext context, List<GenreEntity> genres) {
                     color: genreColors[index],
                   ),
                   child: Center(
-                    child: Text('${genres[index].genres[0].name}',
+                    child: Text(genres[index].genres[0].name,
                     style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontSize: 20,
@@ -46,7 +46,7 @@ Widget categoriesTile (BuildContext context, List<GenreEntity> genres) {
             itemCount: column2Count,
             itemBuilder: (context, index) {
               return Padding(
-                padding: EdgeInsets.all(5.0),
+                padding: const EdgeInsets.all(5.0),
                 child: Container(
                   height: screenHeight * 0.1,
                   width: screenWidth - 150,
@@ -55,7 +55,7 @@ Widget categoriesTile (BuildContext context, List<GenreEntity> genres) {
                       color: genreColors[index+column1Count],
                   ),
                   child: Center(
-                    child: Text('${genres[index+column1Count].genres[0].name}',
+                    child: Text(genres[index+column1Count].genres[0].name,
                       style: GoogleFonts.poppins(
                         color: Colors.white,
                         fontSize: 20,

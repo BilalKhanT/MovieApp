@@ -9,7 +9,7 @@ Widget searchMovieCard(MovieEntity movie) {
   return Row(
     children: <Widget>[
       Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(10.0),
           child: CachedNetworkImage(
